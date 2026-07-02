@@ -6,12 +6,24 @@
 (function () {
   let currentButton;
 
-  function handlePlay(event) {
-    // Add code for playing sound.
+ function handlePlay(event) {
+  loadWorkspace(event.target);
+  let code = javascript.javascriptGenerator.workspaceToCode(
+    Blockly.getMainWorkspace(),
+  );
+  code += 'MusicMaker.play();';
+  try {
+    eval(code);
+  } catch (error) {
+    console.log(error);
   }
+}
 
   function save(button) {
     // Add code for saving the behavior of a button.
+    button.blocklySave = Blockly.serialization.workspaces.save(
+      Blockly.getMainWorkspace()
+    );
   }
 
   function handleSave() {
@@ -35,11 +47,19 @@
     });
   }
 
-  
+  function loadWorkspace(button) {
+     const workspace = Blockly.getMainWorkspace();
+     if (button.blocklySave) {
+        Blockly.serialization.workspaces.load(button.blocklySave, workspace);
+     } else {
+        workspace.clear();
+     }
+  }
 
   function enableBlocklyMode(e) {
     document.body.setAttribute('mode', 'blockly');
     currentButton = e.target;
+    loadWorkspace(currentButton);
   }
 
   document.querySelector('#edit').addEventListener('click', enableEditMode);
@@ -64,6 +84,10 @@
           },
         },
       },
+    },
+    {
+      kind: 'block',
+      type: 'play_sound',
     },
   ],
 };
