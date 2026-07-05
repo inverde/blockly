@@ -336,6 +336,49 @@
       <block type="lists_sort"></block>
       <block type="lists_reverse"></block>
     </category>
+    <category name=" Dictionaries" categorystyle="dictionary_category" colour="20">
+      <block type="dictionaries_create_with">
+        <mutation items="0"></mutation>
+      </block>
+      <block type="dictionaries_create_with"></block>
+      <block type="dictionaries_length"></block>
+      <block type="dictionaries_isEmpty"></block>
+      <block type="dictionaries_getValue">
+        <value name="DICT">
+          <block type="variables_get">
+            <field name="VAR">dictionary</field>
+          </block>
+        </value>
+      </block>
+      <block type="dictionaries_setValue">
+        <value name="DICT">
+          <block type="variables_get">
+            <field name="VAR">dictionary</field>
+          </block>
+        </value>
+      </block>
+      <block type="dictionaries_getKeys">
+        <value name="DICT">
+          <block type="variables_get">
+            <field name="VAR">dictionary</field>
+          </block>
+        </value>
+      </block>
+      <block type="dictionaries_getValues">
+        <value name="DICT">
+          <block type="variables_get">
+            <field name="VAR">dictionary</field>
+          </block>
+        </value>
+      </block>
+      <block type="dictionaries_hasKey">
+        <value name="DICT">
+          <block type="variables_get">
+            <field name="VAR">dictionary</field>
+          </block>
+        </value>
+      </block>
+    </category>
     <sep></sep>
     <category name="Variables" categorystyle="variable_category" custom="VARIABLE"></category>
     <category name="Functions" categorystyle="procedure_category" custom="PROCEDURE"></category>
